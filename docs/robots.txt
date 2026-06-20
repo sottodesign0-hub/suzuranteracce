@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sottodesign0-hub.github.io/suzuranteracce/sitemap.xml
