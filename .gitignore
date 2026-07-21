@@ -4,3 +4,6 @@
 
 # Claude Code local settings
 .claude/
+
+# Retired / unused assets kept aside locally
+docs/_unused/
