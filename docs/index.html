@@ -992,27 +992,36 @@
     /* ── Hall featured banner ── */
     .hall-featured {
       display: grid;
-      grid-template-columns: 1fr;
-      margin: 0 40px 52px;
-      border-radius: 20px;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      background: var(--charcoal);
+      margin: 0 40px 48px;
+      border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 8px 48px rgba(58,50,50,.13);
+    }
+    .hf-left {
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .hall-featured-photo {
       position: relative;
       overflow: hidden;
-      height: 420px;
+      margin-top: 22px;
+      max-width: 340px;
+      border-radius: 10px;
     }
     .hall-featured-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center;
+      width: 100%; height: auto;
+      display: block;
       transition: transform .6s ease;
     }
     .hall-featured:hover .hall-featured-photo img { transform: scale(1.04); }
     .hall-featured-body {
       background: var(--charcoal);
-      padding: 52px 52px;
+      padding: 36px 40px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1180,13 +1189,12 @@
 
     .room-card-photo {
       position: relative;
-      height: 240px;
       overflow: hidden;
       flex-shrink: 0;
     }
     .room-card-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
+      width: 100%; height: auto;
+      display: block;
       transition: transform .65s ease;
     }
     .room-card:hover .room-card-photo img { transform: scale(1.05); }
@@ -2981,7 +2989,8 @@
       .for-wrap, .reform-wrap, .uses-wrap, .owner-wrap { padding: 0 28px; }
       .spaces-header { padding: 80px 28px 52px; }
       .hall-featured { grid-template-columns: 1fr; margin: 0 20px 36px; min-height: auto; }
-      .hall-featured-photo { height: 260px; }
+      .hall-featured-photo { height: auto; max-width: 100%; }
+      .hf-left { padding: 36px 28px; }
       .hall-featured-body { padding: 36px 28px; }
 
       .for-grid { grid-template-columns: 1fr; }
@@ -2989,7 +2998,7 @@
       /* ── ROOMカード：縦1列スタック ── */
       .rooms-scroll { overflow-x: visible; padding: 0 20px 24px; }
       .rooms-grid { grid-template-columns: 1fr; gap: 20px; min-width: 0; }
-      .room-card-photo { height: 200px; }
+      .room-card-photo { height: auto; }
 
       .room-row, .room-row.rev { grid-template-columns: 1fr; direction: ltr; }
       .room-photo img { min-height: 280px; }
@@ -3125,9 +3134,9 @@
      FIXED BG LAYERS
 ══════════════════════════════════ -->
 <div id="bg-stage" aria-hidden="true">
-  <div class="bg-img" id="bg0" style="background-image: url('room4.PNG'); background-position: center top;"></div>
-  <div class="bg-img" id="bg1" style="background-image: url('IMG_3789.JPG');"></div>
-  <div class="bg-img" id="bg2" style="background-image: url('IMG_7338.JPG');"></div>
+  <div class="bg-img" id="bg0" style="background-image: url('hero-room4.jpg'); background-position: center center;"></div>
+  <div class="bg-img" id="bg1" style="background-image: url('hero-sage.jpg');"></div>
+  <div class="bg-img" id="bg2" style="background-image: url('hero-exterior.jpg'); background-position: center center;"></div>
   <div class="bg-img" id="bg3" style="background-image: url('sotto.jpg'); background-position: center 20%;"></div>
 </div>
 
@@ -3152,6 +3161,7 @@
   <ul class="nav-links">
     <li><a href="#scenes">利用シーン</a></li>
     <li><a href="#events">Event / News</a></li>
+    <li><a href="#gallery">ギャラリー</a></li>
     <li><a href="#spaces">スペース紹介</a></li>
     <li><a href="#pricing">料金</a></li>
     <li><a href="#owner">オーナーの想い</a></li>
@@ -3177,6 +3187,7 @@
   <ul class="ov-links">
     <li><a href="#scenes"   onclick="closeMenu()">利用シーン</a></li>
     <li><a href="#events"   onclick="closeMenu()">Event / News</a></li>
+    <li><a href="#gallery"  onclick="closeMenu()">ギャラリー</a></li>
     <li><a href="#spaces"   onclick="closeMenu()">スペース紹介</a></li>
     <li><a href="#pricing"  onclick="closeMenu()">料金</a></li>
     <li><a href="#owner"    onclick="closeMenu()">オーナーの想い</a></li>
@@ -3490,6 +3501,90 @@
 
 
 <!-- ══════════════════════════════════
+     GALLERY (solid)
+══════════════════════════════════ -->
+<style>
+  #gallery {
+    background: var(--cream);
+    padding: 96px 0 100px;
+    overflow: hidden;
+  }
+  .gallery-wrap { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+  .gallery-head { text-align: center; margin-bottom: 48px; }
+  .gallery-head .h2 { margin-top: 12px; }
+  .gallery-head .g-sub {
+    margin-top: 14px;
+    font-family: var(--f-body);
+    font-size: .78rem;
+    letter-spacing: .1em;
+    line-height: 2;
+    color: var(--warm-gray);
+  }
+  .gallery-grid {
+    column-count: 4;
+    column-gap: 10px;
+  }
+  .g-item {
+    position: relative;
+    margin: 0 0 10px;
+    break-inside: avoid;
+    overflow: hidden;
+    border-radius: 3px;
+    background: var(--light-gray);
+    box-shadow: 0 8px 26px rgba(58,50,50,.08);
+  }
+  .g-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s;
+    filter: saturate(.96);
+  }
+  .g-item:hover img { transform: scale(1.045); filter: saturate(1.05); }
+  .g-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(58,50,50,.18), transparent 42%);
+    opacity: 0; transition: opacity .5s;
+    pointer-events: none;
+  }
+  .g-item:hover::after { opacity: 1; }
+  @media (max-width: 860px) {
+    .gallery-grid { column-count: 3; }
+    .gallery-wrap { padding: 0 24px; }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { column-count: 2; column-gap: 10px; }
+    .g-item { margin-bottom: 10px; }
+  }
+</style>
+<section id="gallery" class="solid">
+  <div class="gallery-wrap">
+    <div class="gallery-head reveal">
+      <p class="eyebrow" style="justify-content:center;">Gallery</p>
+      <p class="g-sub">リノベーションを終えた館内と、鈴蘭台の街並み。</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g-item reveal"><img src="g01.jpg" alt="すずらんテラス SOTTO 外観と鈴蘭台の坂道" loading="lazy" /></figure>
+      <figure class="g-item reveal d1"><img src="g03.jpg" alt="ROOM4 青い花柄のカフェスペース" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g06.jpg" alt="ピーチカラーの個室" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="ext-entrance.jpg" alt="COFFEE ROOM・EKUBO のエントランス" loading="lazy" /></figure>
+      <figure class="g-item reveal d1"><img src="g07.jpg" alt="セージグリーンの個室" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g02.jpg" alt="SOTTO ロゴサイン" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="g08.jpg" alt="造作棚のあるお部屋" loading="lazy" /></figure>
+      <figure class="g-item reveal d1"><img src="g11.jpg" alt="建物の外観（サイド）" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g09.jpg" alt="ペンダントライトとチェアのしつらえ" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="g10.jpg" alt="SOTTO の入口ドア" loading="lazy" /></figure>
+      <figure class="g-item reveal d1"><img src="g15.jpg" alt="明るい二面窓のお部屋" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g13.jpg" alt="COFFEE ROOM の看板ディテール" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="g18.jpg" alt="二枚扉と窓のある明るいお部屋" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g14.jpg" alt="鈴蘭台の坂道から見た建物外観" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="g19.jpg" alt="1F 元喫茶店の趣ある内観（木のカウンターとヴィンテージ照明）" loading="lazy" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
      SPACES (solid)
 ══════════════════════════════════ -->
 <section id="spaces" class="solid">
@@ -3499,16 +3594,18 @@
     <p style="margin-top:10px; font-size:.8rem; color:var(--warm-gray); letter-spacing:.08em;">全3室 + ホール — 各フロアにひとつのプライベート空間</p>
   </div>
 
-  <!-- ── HALL featured (写真上・説明下) ── -->
+  <!-- ── HALL featured (左：見出し+写真 / 右：用途+スペック+料金) ── -->
   <div class="hall-featured reveal">
-    <div class="hall-featured-photo">
-      <img src="hall.jpg" alt="2F HALL イベントスペース" />
-    </div>
-    <div class="hall-featured-body">
+    <div class="hf-left">
       <p class="hf-tag">Hall — 2nd Floor</p>
       <h3 class="hf-name">HALL</h3>
       <p class="hf-jp">2階 イベント・フリースペース</p>
       <p class="hf-desc">入居者・地域の方に開かれた多目的スペース。あなたのやりたいことを、自由に発信できます。</p>
+      <div class="hall-featured-photo">
+        <img src="new-hall.jpg" alt="2F HALL イベントスペース" />
+      </div>
+    </div>
+    <div class="hall-featured-body">
 
       <!-- 用途グリッド -->
       <div class="hf-uses">
@@ -3562,7 +3659,7 @@
       <!-- ROOM 1 -->
       <div class="room-card reveal">
         <div class="room-card-photo">
-          <img src="IMG_3789.JPG" alt="1F ROOM1 内装" />
+          <img src="new-room1.jpg" alt="1F ROOM1 内装" />
           <div class="rp-overlay"></div>
           <div class="rp-tags">
             <span class="rp-tag floor">1F — Tenant</span>
@@ -3590,7 +3687,7 @@
       <!-- ROOM 2 -->
       <div class="room-card reveal d1">
         <div class="room-card-photo">
-          <img src="room2.PNG" alt="2F ROOM2 内装" />
+          <img src="new-room2.jpg" alt="2F ROOM2 内装" />
           <div class="rp-overlay"></div>
           <div class="rp-tags">
             <span class="rp-tag floor">2F</span>
@@ -3617,7 +3714,7 @@
       <!-- ROOM 3 -->
       <div class="room-card reveal d2">
         <div class="room-card-photo">
-          <img src="room3.PNG" alt="3F スペース" />
+          <img src="new-room3.jpg" alt="3F ROOM3 内装" />
           <div class="rp-overlay"></div>
           <div class="rp-tags">
             <span class="rp-tag floor">3F</span>
@@ -3906,12 +4003,6 @@
      ACCESS (solid)
 ══════════════════════════════════ -->
 <section id="access" class="solid">
-  <!-- 外観写真 -->
-  <div class="access-exterior">
-    <img src="IMG_4958.jpeg" alt="すずらんテラス SOTTO 外観1" />
-    <img src="IMG_4954.jpeg" alt="すずらんテラス SOTTO 外観2" />
-    <p class="access-exterior-caption">神戸市北区鈴蘭台 — 元コーヒーロームをリノベーション</p>
-  </div>
   <div class="access-wrap">
     <div class="reveal">
       <p class="eyebrow">Access</p>

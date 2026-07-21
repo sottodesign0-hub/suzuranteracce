@@ -7,3 +7,10 @@
 
 # Retired / unused assets kept aside locally
 docs/_unused/
+
+# Working backups (Claude Code)
+docs/*.bak
+docs/index.html.bak*
+
+# Source photo library (not deployed to the site)
+docs/shasin＿all/
