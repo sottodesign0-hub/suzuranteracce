@@ -1304,6 +1304,23 @@
       font-size: .55rem;
     }
 
+    .rp-tag.occupied {
+      background: rgba(120,110,110,.55);
+      border: 1px solid rgba(255,255,255,.5);
+      color: white;
+      font-weight: 600;
+    }
+
+    .room-occupied-note {
+      margin-top: 18px;
+      padding: 12px 0 4px;
+      border-top: 1px solid rgba(168,112,112,.2);
+      font-family: var(--f-jp);
+      font-size: .82rem;
+      letter-spacing: .1em;
+      color: var(--warm-gray);
+    }
+
     .rp-size {
       position: absolute;
       bottom: 22px; left: 24px;
@@ -1432,6 +1449,7 @@
       transition: background .25s, padding-left .25s;
     }
     .notice-link:hover { background: rgba(201,160,160,.07); padding-left: 16px; }
+    .notice-link.static, .notice-link.static:hover { background: none; padding-left: 0; cursor: default; }
     .notice-date {
       font-family: var(--f-display);
       font-size: .82rem;
@@ -3209,7 +3227,7 @@
      ANNOUNCE BAR
 ══════════════════════════════════ -->
 <div id="announce-bar">
-  <a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="ann-full">
+  <a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="ann-full">
     <span>入居者・テナント募集中</span>
     お問い合わせはこちら
     <span class="ann-arrow"></span>
@@ -3233,7 +3251,7 @@
     <li><a href="#owner">オーナーの想い</a></li>
     <li><a href="#access">アクセス</a></li>
   </ul>
-  <a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="nav-cta-btn">お問い合わせ</a>
+  <a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="nav-cta-btn">お問い合わせ</a>
   <div class="nav-burger-wrap" id="burger-wrap" role="button" aria-label="メニューを開く" aria-expanded="false" tabindex="0">
     <span class="nav-menu-label">MENU</span>
     <button class="nav-burger" id="burger" tabindex="-1">
@@ -3262,7 +3280,7 @@
     <li><a href="#access"   onclick="closeMenu()">アクセス</a></li>
   </ul>
   <div class="ov-divider"></div>
-  <a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="ov-cta">
+  <a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="ov-cta">
     LINE でお問い合わせ
   </a>
   <div class="ov-info">
@@ -3294,7 +3312,7 @@
       <span class="badge">登記可</span>
     </div>
     <div class="hero-cta">
-      <a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="btn-hero-primary">
+      <a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="btn-hero-primary">
         📅 見学予約する
       </a>
       <a href="#scenes" class="btn-hero-secondary">
@@ -3397,7 +3415,7 @@
       </div>
     </div>
     <div class="solution-cta reveal">
-      <a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="btn-rose">
+      <a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="btn-rose">
         LINE で気軽に相談する
       </a>
     </div>
@@ -3412,7 +3430,7 @@
     <div class="reveal" style="margin-bottom:48px;">
       <p class="eyebrow">イベント情報</p>
       <h2 class="h2" style="margin-top:6px; font-family:var(--f-display); font-weight:400; letter-spacing:.14em;">EVENT</h2>
-      <p style="margin-top:10px; font-size:.82rem; color:var(--warm-gray); letter-spacing:.08em;">2Fホールにて月1〜2回、ワークショップ・交流イベントを開催予定</p>
+      <p style="margin-top:10px; font-size:.82rem; color:var(--warm-gray); letter-spacing:.08em;">2Fホールにて、ワークショップ・交流イベントを不定期開催予定</p>
     </div>
     <div class="news-scroll-outer">
       <div class="news-scroll-hint">
@@ -3440,11 +3458,11 @@
           <img src="marche.png" alt="にぎわいMARCHÉ" />
         </div>
         <p class="news-meta">
-          定期開催
+          不定期開催
           <span class="news-cat">Marché</span>
         </p>
         <p class="news-title">にぎわいMARCHÉ</p>
-        <p style="margin-top:8px; font-size:.72rem; line-height:1.8; color:var(--warm-gray);">思いっきり楽しもう！地域の作家・クリエイター・出店者が集まるマルシェを定期開催予定。詳細は開設後にお知らせします。</p>
+        <p style="margin-top:8px; font-size:.72rem; line-height:1.8; color:var(--warm-gray);">思いっきり楽しもう！地域の作家・クリエイター・出店者が集まるマルシェを不定期開催予定。詳細は開設後にお知らせします。</p>
       </article>
 
       <!-- Card 3 -->
@@ -3453,11 +3471,11 @@
           <img src="WORKSHOP.png" alt="ワークショップ" />
         </div>
         <p class="news-meta">
-          定期開催
+          不定期開催
           <span class="news-cat">Workshop</span>
         </p>
-        <p class="news-title">月1〜2回 定期ワークショップ</p>
-        <p style="margin-top:8px; font-size:.72rem; line-height:1.8; color:var(--warm-gray);">作家・起業家・クリエイターによるワークショップや勉強会を定期開催。地域の方もご参加いただけます。テーマは随時更新予定。</p>
+        <p class="news-title">ワークショップ</p>
+        <p style="margin-top:8px; font-size:.72rem; line-height:1.8; color:var(--warm-gray);">作家・起業家・クリエイターによるワークショップや勉強会を不定期開催。地域の方もご参加いただけます。テーマは随時更新予定。</p>
       </article>
 
     </div>
@@ -3483,6 +3501,14 @@
     </div>
 
     <ul class="notice-list">
+      <!-- メディア掲載：週刊不動産経営 -->
+      <li class="notice-item reveal">
+        <div class="notice-link static">
+          <span class="notice-date">2026.8</span>
+          <span class="notice-cat">メディア掲載</span>
+          <span class="notice-title">「週刊不動産経営」第1449号に、すずらんテラス SOTTO の取り組みが掲載されました。</span>
+        </div>
+      </li>
       <!-- プレスリリース -->
       <li class="notice-item reveal">
         <a href="https://prtimes.jp/main/html/rd/p/000000004.000180328.html" target="_blank" rel="noopener" class="notice-link">
@@ -3553,7 +3579,7 @@
             <span class="fp-cl-dot" style="background:#a8d0b8;"></span>
             <div>
               <p class="fp-cl-name">ROOM 3</p>
-              <p class="fp-cl-sub">3F — 女性専用</p>
+              <p class="fp-cl-sub">3F — 女性専用 ｜ 入居者決定</p>
             </div>
           </div>
         </div>
@@ -3587,7 +3613,7 @@
           <span class="fp-tbl-dot" style="background:#a8d0b8;"></span>
           <div>
             <p class="fp-strip-name">ROOM 3</p>
-            <p class="fp-strip-sub">3階 — 女性専用シェアアトリエ</p>
+            <p class="fp-strip-sub">3階 — 女性専用シェアアトリエ ｜ 入居者決定</p>
           </div>
         </div>
       </div>
@@ -3735,7 +3761,7 @@
       <div class="hf-spec-bar">
         <div class="hf-spec-item"><span class="hf-spec-label">Size</span><span class="hf-spec-val">7.7帖</span></div>
         <div class="hf-spec-item"><span class="hf-spec-label">Floor</span><span class="hf-spec-val">2階</span></div>
-        <div class="hf-spec-item"><span class="hf-spec-label">Event</span><span class="hf-spec-val">月1〜2回</span></div>
+        <div class="hf-spec-item"><span class="hf-spec-label">Event</span><span class="hf-spec-val">不定期開催</span></div>
       </div>
 
       <div class="hf-price-row">
@@ -3772,11 +3798,13 @@
             <li>約31m²（約19帖）の独立空間</li>
             <li>独立した入口でオリジナルブランディング可</li>
             <li>飲食・サロン・事務所など幅広い用途に対応</li>
+            <li>時間貸し対応（1時間〜）／丸っと1ヶ月も可</li>
           </ul>
           <a href="#pricing" class="room-price-link">
-            <p class="rpl-price">¥88,000<span>/ 月</span></p>
+            <p class="rpl-price">¥1,000<span>〜 / 時間</span></p>
             <span class="rpl-label">料金詳細 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" style="width:12px;height:12px;"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg></span>
           </a>
+          <p style="margin-top:8px; font-size:.72rem; letter-spacing:.06em; color:var(--warm-gray);">丸っと1ヶ月ご利用の場合：¥88,000 / 月</p>
         </div>
       </div>
 
@@ -3815,6 +3843,7 @@
           <div class="rp-tags">
             <span class="rp-tag floor">3F</span>
             <span class="rp-tag female">女性専用</span>
+            <span class="rp-tag occupied">入居者決定</span>
           </div>
           <span class="rp-size">6帖</span>
         </div>
@@ -3827,10 +3856,7 @@
             <li>6帖・最上階のプライベートな個室</li>
             <li>バルコニーあり・眺望良好</li>
           </ul>
-          <a href="#pricing" class="room-price-link">
-            <p class="rpl-price">¥35,000<span>/ 月</span></p>
-            <span class="rpl-label">料金詳細 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" style="width:12px;height:12px;"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg></span>
-          </a>
+          <p class="room-occupied-note">入居者決定（満室）</p>
         </div>
       </div>
 
@@ -3851,30 +3877,30 @@
   <div class="pricing-grid">
     <div class="pricing-card reveal">
       <div class="pricing-card-head featured">
-        <span class="pricing-card-floor">2F — Event Space</span>
-        <p class="pricing-card-name">HALL　イベントスペース</p>
+        <span class="pricing-card-floor">1F ROOM1 · 2F HALL</span>
+        <p class="pricing-card-name">時間貸し（ROOM 1・HALL）</p>
       </div>
       <div class="pricing-card-body">
         <p class="pricing-price">¥1,000<span> / 時間〜</span></p>
         <ul class="pricing-feats">
-          <li>7.7帖・多目的フリースペース</li>
-          <li>ワークショップ・展示・勉強会など</li>
-          <li>入居者は優先利用・割引あり</li>
-          <li>地域の方も利用歓迎</li>
-          <li>利用時間・料金は応相談</li>
+          <li>ROOM 1（1F テナント）・HALL（2F）を時間単位で利用可</li>
+          <li>ROOM 1：約31m²（約19帖）・元喫茶店の趣</li>
+          <li>HALL：7.7帖・多目的フリースペース</li>
+          <li>ワークショップ・展示・勉強会・撮影など</li>
+          <li>入居者は優先利用・割引あり／利用時間・料金は応相談</li>
         </ul>
       </div>
     </div>
     <div class="pricing-card reveal d1">
       <div class="pricing-card-head featured">
         <span class="pricing-card-floor">1F — Tenant</span>
-        <p class="pricing-card-name">ROOM 1　テナントスペース</p>
+        <p class="pricing-card-name">ROOM 1　テナントスペース（月額）</p>
       </div>
       <div class="pricing-card-body">
         <p class="pricing-price">¥88,000<span> / 月</span></p>
         <ul class="pricing-feats">
-          <li>約31m²（約19帖）独立空間</li>
-          <li>元喫茶店の趣ある内装</li>
+          <li>丸っと1ヶ月〜の月極利用</li>
+          <li>約31m²（約19帖）独立空間・元喫茶店の趣</li>
           <li>飲食・サロン・事務所など幅広く対応</li>
           <li>法人・個人事業の住所登記可</li>
           <li>独立した入口でブランディング自由</li>
@@ -3883,13 +3909,13 @@
     </div>
     <div class="pricing-card reveal d2">
       <div class="pricing-card-head featured">
-        <span class="pricing-card-floor">2F · 3F — Women Only</span>
-        <p class="pricing-card-name">ROOM 2 / 3　女性専用アトリエ</p>
+        <span class="pricing-card-floor">2F — Women Only</span>
+        <p class="pricing-card-name">ROOM 2　女性専用アトリエ</p>
       </div>
       <div class="pricing-card-body">
         <p class="pricing-price">¥35,000<span> / 月</span></p>
         <ul class="pricing-feats">
-          <li>各6帖・完全個室プライベート空間</li>
+          <li>6帖・完全個室プライベート空間</li>
           <li>女性専用フロアで安心して利用可能</li>
           <li>2Fホール（フリースペース）を優先利用</li>
           <li>住所登記対応可</li>
@@ -3920,7 +3946,7 @@
     「気になるけど、まだ迷ってる」そんな方も大歓迎です。見学は無料（事前連絡歓迎）。LINEで気軽にご連絡ください。
   </p>
   <div class="mid-cta-btns reveal">
-    <a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="btn-white">
+    <a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="btn-white">
       📅 LINEで見学予約する
     </a>
     <a href="https://www.instagram.com/suzuran_sotto" target="_blank" rel="noopener" class="btn-ghost-white">
@@ -3961,7 +3987,7 @@
   </div>
   <div class="owner-vision-wrap reveal">
     <div class="owner-vision">
-      <p>すずらんテラスSOTTOは、鈴蘭台に眠る空き家を活用し、鈴蘭台で活動する女性起業家・フリーランスの方々が安心して働ける拠点をつくりたいという想いから生まれました。常設シェアオフィスに加えバーチャルオフィス機能も備え、月1〜2回は地域の作家や起業家によるイベント・勉強会も開催予定。挑戦する人同士が支え合い、新しい可能性が生まれる場所を目指しています。</p>
+      <p>すずらんテラスSOTTOは、鈴蘭台に眠る空き家を活用し、鈴蘭台で活動する女性起業家・フリーランスの方々が安心して働ける拠点をつくりたいという想いから生まれました。常設シェアオフィスに加えバーチャルオフィス機能も備え、地域の作家や起業家によるイベント・勉強会も不定期開催予定。挑戦する人同士が支え合い、新しい可能性が生まれる場所を目指しています。</p>
     </div>
   </div>
 </section>
@@ -4179,7 +4205,7 @@
       「まだ迷ってる」「話だけ聞きたい」そんな方も大歓迎。見学は<strong>無料・約30分</strong>。LINEで日程を送るだけでOKです。
     </p>
     <div class="contact-btns reveal">
-      <a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="btn-rose">
+      <a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="btn-rose">
         📅 LINEで見学予約する（無料）
       </a>
       <a href="https://www.instagram.com/suzuran_sotto" target="_blank" rel="noopener" class="btn-ghost-dark">
@@ -4229,7 +4255,7 @@
     <div>
       <span class="footer-col-label">Contact</span>
       <div class="footer-contact-list">
-        <a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="footer-contact-btn">
+        <a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="footer-contact-btn">
           LINE 公式アカウント
         </a>
         <a href="https://www.instagram.com/suzuran_sotto" target="_blank" rel="noopener" class="footer-contact-btn">
@@ -4462,7 +4488,7 @@
 </script>
 
 <!-- ── フローティング お問い合わせボタン ── -->
-<a href="https://lin.ee/pGAEVeJ" target="_blank" rel="noopener" class="fab-contact" aria-label="LINEでお問い合わせ">
+<a href="https://lin.ee/QWlGstO" target="_blank" rel="noopener" class="fab-contact" aria-label="LINEでお問い合わせ">
   <div class="fab-circle">
     <!-- chat bubble icon -->
     <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
