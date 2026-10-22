@@ -3462,7 +3462,72 @@
 </section>
 
 <!-- ══════════════════════════════════
-     EVENTS CALENDAR (solid)
+     EVENT CALENDAR (solid) — カレンダー表示
+══════════════════════════════════ -->
+<style>
+  #event-calendar .home-cal-wrap { max-width: 720px; margin: 0 auto; }
+  #event-calendar .cal-head { display:flex; align-items:center; justify-content:center; gap:22px; margin:28px 0 18px; }
+  #event-calendar .cal-nav-btn { width:40px; height:40px; border-radius:50%; border:1px solid var(--light-gray); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--deep-rose); transition:all .2s; }
+  #event-calendar .cal-nav-btn:hover { background:var(--deep-rose); color:#fff; border-color:var(--deep-rose); }
+  #event-calendar .cal-nav-btn svg { width:15px; height:15px; }
+  #event-calendar .cal-title { font-family:var(--f-jp); font-size:1.15rem; letter-spacing:.08em; min-width:150px; text-align:center; color:var(--charcoal); }
+  #event-calendar .cal-title .y { font-size:.78rem; color:var(--warm-gray); display:block; letter-spacing:.14em; }
+  #event-calendar .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); border:1px solid var(--light-gray); border-radius:14px; overflow:hidden; background:#fff; max-width:560px; margin:0 auto; }
+  #event-calendar .cal-dow { text-align:center; font-family:var(--f-jp); font-size:.66rem; letter-spacing:.08em; padding:10px 0; color:var(--warm-gray); background:var(--cream); border-bottom:1px solid var(--light-gray); }
+  #event-calendar .cal-dow.sun { color:#c08; opacity:.7; }
+  #event-calendar .cal-dow.sat { color:#68a; opacity:.7; }
+  #event-calendar .cal-cell { min-height:54px; padding:5px 4px; border-top:1px solid var(--light-gray); border-left:1px solid var(--light-gray); font-size:.72rem; position:relative; }
+  #event-calendar .cal-cell:nth-child(7n+1) { border-left:none; }
+  #event-calendar .cal-cell.empty { background:#faf7f3; }
+  #event-calendar .cal-cell.has-ev { background:#fbf2f0; }
+  #event-calendar .cal-cell.has-ev .cal-daynum { font-weight:500; color:var(--deep-rose); }
+  #event-calendar .cal-daynum { font-family:var(--f-jp); color:var(--charcoal); font-size:.76rem; }
+  #event-calendar .cal-cell.today .cal-daynum { background:var(--deep-rose); color:#fff; border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:.68rem; }
+  #event-calendar .cal-cell.sun .cal-daynum { color:#c08; }
+  #event-calendar .cal-cell.sat .cal-daynum { color:#68a; }
+  #event-calendar .cal-ev { display:inline-block; width:auto; max-width:100%; border:none; cursor:pointer; margin:3px 2px 0 0; padding:1px 7px; border-radius:10px; font-family:var(--f-body); font-size:.56rem; line-height:1.6; letter-spacing:.04em; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:transform .15s, filter .15s; }
+  #event-calendar .cal-ev:hover { transform:translateY(-1px); filter:brightness(1.08); }
+  #event-calendar .cal-ev.past { opacity:.5; }
+  #event-calendar .legend { display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:center; margin-top:20px; }
+  #event-calendar .legend-item { display:inline-flex; align-items:center; gap:7px; font-family:var(--f-jp); font-size:.72rem; color:var(--warm-gray); }
+  #event-calendar .legend-dot { width:11px; height:11px; border-radius:3px; }
+  #event-calendar .cal-more { text-align:center; margin-top:28px; }
+  #event-calendar .cal-more a { display:inline-flex; align-items:center; gap:10px; font-family:var(--f-jp); font-size:.78rem; letter-spacing:.16em; color:#fff; background:var(--deep-rose); padding:11px 26px; border-radius:24px; transition:all .25s; }
+  #event-calendar .cal-more a:hover { background:#946060; }
+  @media (max-width: 640px) {
+    #event-calendar .cal-cell { min-height:46px; padding:4px 3px; }
+    #event-calendar .cal-ev { font-size:.54rem; padding:2px 3px; }
+    #event-calendar .cal-head { gap:14px; }
+  }
+</style>
+<section id="event-calendar" class="solid">
+  <div class="home-cal-wrap">
+    <div class="reveal" style="margin-bottom:8px;">
+      <p class="eyebrow">イベントカレンダー</p>
+      <h2 class="h2" style="margin-top:6px; font-family:var(--f-display); font-weight:400; letter-spacing:.14em;">CALENDAR</h2>
+      <p style="margin-top:10px; font-size:.82rem; color:var(--warm-gray); letter-spacing:.08em;">月ごとの開催予定をカレンダーでご確認いただけます</p>
+    </div>
+    <div class="cal-head">
+      <button class="cal-nav-btn" id="homeCalPrev" aria-label="前の月">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg>
+      </button>
+      <div class="cal-title" id="homeCalTitle"></div>
+      <button class="cal-nav-btn" id="homeCalNext" aria-label="次の月">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg>
+      </button>
+    </div>
+    <div class="cal-grid" id="homeCalGrid"></div>
+    <div class="legend" id="homeLegend"></div>
+    <div class="cal-more">
+      <a href="events.html">イベント一覧・詳細を見る
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:14px;height:14px;"><line x1="3" y1="10" x2="17" y2="10"/><polyline points="11,4 17,10 11,16"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     EVENTS (solid) — カード一覧
 ══════════════════════════════════ -->
 <section id="events" class="solid">
   <div class="news-wrap">
@@ -3527,7 +3592,11 @@
 
     </div>
     </div><!-- /news-scroll-outer -->
-    <div class="news-more reveal news-more-wrap" style="margin-top:8px;">
+    <div class="news-more reveal news-more-wrap" style="margin-top:8px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+      <a href="events.html" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--f-jp); font-size:.78rem; letter-spacing:.16em; color:#fff; background:var(--deep-rose); padding:11px 26px; border-radius:24px; transition:all .25s;">
+        イベントカレンダーを見る
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:14px;height:14px;"><line x1="3" y1="10" x2="17" y2="10"/><polyline points="11,4 17,10 11,16"/></svg>
+      </a>
       <a href="https://www.instagram.com/suzuran_sotto" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--f-jp); font-size:.78rem; letter-spacing:.16em; color:var(--deep-rose); border:1px solid rgba(168,112,112,.35); padding:10px 24px; border-radius:24px; transition:all .25s;">
         Instagram でイベント情報をチェック
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:14px;height:14px;"><line x1="3" y1="10" x2="17" y2="10"/><polyline points="11,4 17,10 11,16"/></svg>
@@ -4717,5 +4786,27 @@
   <span class="fab-label">お問い合わせ</span>
 </a>
 
+<!-- ── トップページ用カレンダー（イベントデータは events-data.js 共通） ── -->
+<script src="events-data.js"></script>
+<script>
+  if (typeof evMountCalendar === "function" && document.getElementById("homeCalGrid")) {
+    evMountCalendar({
+      grid: "homeCalGrid",
+      title: "homeCalTitle",
+      prev: "homeCalPrev",
+      next: "homeCalNext",
+      onEventClick: ev => { location.href = "events.html#" + ev._id; }
+    });
+    (function homeLegend(){
+      const used = [...new Set(EVENTS_SORTED.map(e=>e.cat))];
+      const order = ["event","workshop","cafe","other"];
+      const el = document.getElementById("homeLegend");
+      if (el) el.innerHTML = order.filter(c=>used.includes(c)).map(c=>{
+        const cat = EVENT_CATS[c];
+        return `<span class="legend-item"><span class="legend-dot" style="background:${cat.color}"></span>${cat.label}</span>`;
+      }).join("");
+    })();
+  }
+</script>
 </body>
 </html>
