@@ -2835,9 +2835,9 @@
     }
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
-      max-width: 1000px;
+      max-width: 680px;
       margin: 0 auto 48px;
     }
     .pricing-card {
@@ -3462,70 +3462,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     EVENT CALENDAR (solid) — カレンダー表示
-══════════════════════════════════ -->
-<style>
-  #event-calendar .home-cal-wrap { max-width: 720px; margin: 0 auto; }
-  #event-calendar .cal-head { display:flex; align-items:center; justify-content:center; gap:22px; margin:28px 0 18px; }
-  #event-calendar .cal-nav-btn { width:40px; height:40px; border-radius:50%; border:1px solid var(--light-gray); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--deep-rose); transition:all .2s; }
-  #event-calendar .cal-nav-btn:hover { background:var(--deep-rose); color:#fff; border-color:var(--deep-rose); }
-  #event-calendar .cal-nav-btn svg { width:15px; height:15px; }
-  #event-calendar .cal-title { font-family:var(--f-jp); font-size:1.15rem; letter-spacing:.08em; min-width:150px; text-align:center; color:var(--charcoal); }
-  #event-calendar .cal-title .y { font-size:.78rem; color:var(--warm-gray); display:block; letter-spacing:.14em; }
-  #event-calendar .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); border:1px solid var(--light-gray); border-radius:14px; overflow:hidden; background:#fff; max-width:560px; margin:0 auto; }
-  #event-calendar .cal-dow { text-align:center; font-family:var(--f-jp); font-size:.66rem; letter-spacing:.08em; padding:10px 0; color:var(--warm-gray); background:var(--cream); border-bottom:1px solid var(--light-gray); }
-  #event-calendar .cal-dow.sun { color:#c08; opacity:.7; }
-  #event-calendar .cal-dow.sat { color:#68a; opacity:.7; }
-  #event-calendar .cal-cell { min-height:54px; padding:5px 4px; border-top:1px solid var(--light-gray); border-left:1px solid var(--light-gray); font-size:.72rem; position:relative; }
-  #event-calendar .cal-cell:nth-child(7n+1) { border-left:none; }
-  #event-calendar .cal-cell.empty { background:#faf7f3; }
-  #event-calendar .cal-cell.has-ev { background:#fbf2f0; }
-  #event-calendar .cal-cell.has-ev .cal-daynum { font-weight:500; color:var(--deep-rose); }
-  #event-calendar .cal-daynum { font-family:var(--f-jp); color:var(--charcoal); font-size:.76rem; }
-  #event-calendar .cal-cell.today .cal-daynum { background:var(--deep-rose); color:#fff; border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:.68rem; }
-  #event-calendar .cal-cell.sun .cal-daynum { color:#c08; }
-  #event-calendar .cal-cell.sat .cal-daynum { color:#68a; }
-  #event-calendar .cal-ev { display:inline-block; width:auto; max-width:100%; border:none; cursor:pointer; margin:3px 2px 0 0; padding:1px 7px; border-radius:10px; font-family:var(--f-body); font-size:.56rem; line-height:1.6; letter-spacing:.04em; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:transform .15s, filter .15s; }
-  #event-calendar .cal-ev:hover { transform:translateY(-1px); filter:brightness(1.08); }
-  #event-calendar .cal-ev.past { opacity:.5; }
-  #event-calendar .legend { display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:center; margin-top:20px; }
-  #event-calendar .legend-item { display:inline-flex; align-items:center; gap:7px; font-family:var(--f-jp); font-size:.72rem; color:var(--warm-gray); }
-  #event-calendar .legend-dot { width:11px; height:11px; border-radius:3px; }
-  #event-calendar .cal-more { text-align:center; margin-top:28px; }
-  #event-calendar .cal-more a { display:inline-flex; align-items:center; gap:10px; font-family:var(--f-jp); font-size:.78rem; letter-spacing:.16em; color:#fff; background:var(--deep-rose); padding:11px 26px; border-radius:24px; transition:all .25s; }
-  #event-calendar .cal-more a:hover { background:#946060; }
-  @media (max-width: 640px) {
-    #event-calendar .cal-cell { min-height:46px; padding:4px 3px; }
-    #event-calendar .cal-ev { font-size:.54rem; padding:2px 3px; }
-    #event-calendar .cal-head { gap:14px; }
-  }
-</style>
-<section id="event-calendar" class="solid">
-  <div class="home-cal-wrap">
-    <div class="reveal" style="margin-bottom:8px;">
-      <p class="eyebrow">イベントカレンダー</p>
-      <h2 class="h2" style="margin-top:6px; font-family:var(--f-display); font-weight:400; letter-spacing:.14em;">CALENDAR</h2>
-      <p style="margin-top:10px; font-size:.82rem; color:var(--warm-gray); letter-spacing:.08em;">月ごとの開催予定をカレンダーでご確認いただけます</p>
-    </div>
-    <div class="cal-head">
-      <button class="cal-nav-btn" id="homeCalPrev" aria-label="前の月">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg>
-      </button>
-      <div class="cal-title" id="homeCalTitle"></div>
-      <button class="cal-nav-btn" id="homeCalNext" aria-label="次の月">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg>
-      </button>
-    </div>
-    <div class="cal-grid" id="homeCalGrid"></div>
-    <div class="legend" id="homeLegend"></div>
-    <div class="cal-more">
-      <a href="events.html">イベント一覧・詳細を見る
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:14px;height:14px;"><line x1="3" y1="10" x2="17" y2="10"/><polyline points="11,4 17,10 11,16"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════
      EVENTS (solid) — カード一覧
@@ -3600,6 +3536,71 @@
       </a>
       <a href="https://www.instagram.com/suzuran_sotto" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--f-jp); font-size:.78rem; letter-spacing:.16em; color:var(--deep-rose); border:1px solid rgba(168,112,112,.35); padding:10px 24px; border-radius:24px; transition:all .25s;">
         Instagram でイベント情報をチェック
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:14px;height:14px;"><line x1="3" y1="10" x2="17" y2="10"/><polyline points="11,4 17,10 11,16"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     EVENT CALENDAR (solid) — カレンダー表示
+══════════════════════════════════ -->
+<style>
+  #event-calendar .home-cal-wrap { max-width: 720px; margin: 0 auto; }
+  #event-calendar .cal-head { display:flex; align-items:center; justify-content:center; gap:22px; margin:28px 0 18px; }
+  #event-calendar .cal-nav-btn { width:40px; height:40px; border-radius:50%; border:1px solid var(--light-gray); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--deep-rose); transition:all .2s; }
+  #event-calendar .cal-nav-btn:hover { background:var(--deep-rose); color:#fff; border-color:var(--deep-rose); }
+  #event-calendar .cal-nav-btn svg { width:15px; height:15px; }
+  #event-calendar .cal-title { font-family:var(--f-jp); font-size:1.15rem; letter-spacing:.08em; min-width:150px; text-align:center; color:var(--charcoal); }
+  #event-calendar .cal-title .y { font-size:.78rem; color:var(--warm-gray); display:block; letter-spacing:.14em; }
+  #event-calendar .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); border:1px solid var(--light-gray); border-radius:14px; overflow:hidden; background:#fff; max-width:560px; margin:0 auto; }
+  #event-calendar .cal-dow { text-align:center; font-family:var(--f-jp); font-size:.66rem; letter-spacing:.08em; padding:10px 0; color:var(--warm-gray); background:var(--cream); border-bottom:1px solid var(--light-gray); }
+  #event-calendar .cal-dow.sun { color:#c08; opacity:.7; }
+  #event-calendar .cal-dow.sat { color:#68a; opacity:.7; }
+  #event-calendar .cal-cell { min-height:54px; padding:5px 4px; border-top:1px solid var(--light-gray); border-left:1px solid var(--light-gray); font-size:.72rem; position:relative; }
+  #event-calendar .cal-cell:nth-child(7n+1) { border-left:none; }
+  #event-calendar .cal-cell.empty { background:#faf7f3; }
+  #event-calendar .cal-cell.has-ev { background:#fbf2f0; }
+  #event-calendar .cal-cell.has-ev .cal-daynum { font-weight:500; color:var(--deep-rose); }
+  #event-calendar .cal-daynum { font-family:var(--f-jp); color:var(--charcoal); font-size:.76rem; }
+  #event-calendar .cal-cell.today .cal-daynum { background:var(--deep-rose); color:#fff; border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:.68rem; }
+  #event-calendar .cal-cell.sun .cal-daynum { color:#c08; }
+  #event-calendar .cal-cell.sat .cal-daynum { color:#68a; }
+  #event-calendar .cal-ev { display:inline-block; width:auto; max-width:100%; border:none; cursor:pointer; margin:3px 2px 0 0; padding:1px 7px; border-radius:10px; font-family:var(--f-body); font-size:.56rem; line-height:1.6; letter-spacing:.04em; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:transform .15s, filter .15s; }
+  #event-calendar .cal-ev:hover { transform:translateY(-1px); filter:brightness(1.08); }
+  #event-calendar .cal-ev.past { opacity:.5; }
+  #event-calendar .legend { display:flex; flex-wrap:wrap; gap:12px 20px; justify-content:center; margin-top:20px; }
+  #event-calendar .legend-item { display:inline-flex; align-items:center; gap:7px; font-family:var(--f-jp); font-size:.72rem; color:var(--warm-gray); }
+  #event-calendar .legend-dot { width:11px; height:11px; border-radius:3px; }
+  #event-calendar .cal-more { text-align:center; margin-top:28px; }
+  #event-calendar .cal-more a { display:inline-flex; align-items:center; gap:10px; font-family:var(--f-jp); font-size:.78rem; letter-spacing:.16em; color:#fff; background:var(--deep-rose); padding:11px 26px; border-radius:24px; transition:all .25s; }
+  #event-calendar .cal-more a:hover { background:#946060; }
+  @media (max-width: 640px) {
+    #event-calendar .cal-cell { min-height:46px; padding:4px 3px; }
+    #event-calendar .cal-ev { font-size:.54rem; padding:2px 3px; }
+    #event-calendar .cal-head { gap:14px; }
+  }
+</style>
+<section id="event-calendar" class="solid">
+  <div class="home-cal-wrap">
+    <div class="reveal" style="margin-bottom:8px;">
+      <p class="eyebrow">イベントカレンダー</p>
+      <h2 class="h2" style="margin-top:6px; font-family:var(--f-display); font-weight:400; letter-spacing:.14em;">CALENDAR</h2>
+      <p style="margin-top:10px; font-size:.82rem; color:var(--warm-gray); letter-spacing:.08em;">月ごとの開催予定をカレンダーでご確認いただけます</p>
+    </div>
+    <div class="cal-head">
+      <button class="cal-nav-btn" id="homeCalPrev" aria-label="前の月">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg>
+      </button>
+      <div class="cal-title" id="homeCalTitle"></div>
+      <button class="cal-nav-btn" id="homeCalNext" aria-label="次の月">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg>
+      </button>
+    </div>
+    <div class="cal-grid" id="homeCalGrid"></div>
+    <div class="legend" id="homeLegend"></div>
+    <div class="cal-more">
+      <a href="events.html">イベント一覧・詳細を見る
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" style="width:14px;height:14px;"><line x1="3" y1="10" x2="17" y2="10"/><polyline points="11,4 17,10 11,16"/></svg>
       </a>
     </div>
@@ -3809,7 +3810,7 @@
             <li>約31m²（約19帖）の独立空間</li>
             <li>独立した入口でオリジナルブランディング可</li>
             <li>飲食・サロン・事務所など幅広い用途に対応</li>
-            <li>時間貸し対応（1時間〜）／丸っと1ヶ月も可</li>
+            <li>丸っと1ヶ月〜の月極利用（料金は要相談）</li>
           </ul>
           <a href="#pricing" class="room-price-link">
             <p class="rpl-price">要相談</p>
@@ -3887,26 +3888,11 @@
   <div class="pricing-grid">
     <div class="pricing-card reveal">
       <div class="pricing-card-head featured">
-        <span class="pricing-card-floor">1F ROOM1</span>
-        <p class="pricing-card-name">時間貸し（ROOM 1）</p>
+        <span class="pricing-card-floor">1F — Tenant</span>
+        <p class="pricing-card-name">ROOM 1　テナントスペース</p>
       </div>
       <div class="pricing-card-body">
         <p class="pricing-price">要相談</p>
-        <ul class="pricing-feats">
-          <li>ROOM 1（1F テナント）を時間単位で利用可</li>
-          <li>ROOM 1：約31m²（約19帖）・元喫茶店の趣</li>
-          <li>ワークショップ・展示・勉強会・撮影など</li>
-          <li>入居者は優先利用・割引あり／利用時間・料金は応相談</li>
-        </ul>
-      </div>
-    </div>
-    <div class="pricing-card reveal d1">
-      <div class="pricing-card-head featured">
-        <span class="pricing-card-floor">1F — Tenant</span>
-        <p class="pricing-card-name">ROOM 1　テナントスペース（月額）</p>
-      </div>
-      <div class="pricing-card-body">
-        <p class="pricing-price">¥88,000<span> / 月</span></p>
         <ul class="pricing-feats">
           <li>丸っと1ヶ月〜の月極利用</li>
           <li>約31m²（約19帖）独立空間・元喫茶店の趣</li>
@@ -3916,7 +3902,7 @@
         </ul>
       </div>
     </div>
-    <div class="pricing-card reveal d2">
+    <div class="pricing-card reveal d1">
       <div class="pricing-card-head featured">
         <span class="pricing-card-floor">2F — Women Only</span>
         <p class="pricing-card-name">ROOM 2　女性専用アトリエ</p>
