@@ -1312,13 +1312,14 @@
     }
 
     .room-occupied-note {
-      margin-top: 18px;
-      padding: 12px 0 4px;
-      border-top: 1px solid rgba(168,112,112,.2);
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--light-gray);
       font-family: var(--f-jp);
-      font-size: .82rem;
-      letter-spacing: .1em;
-      color: var(--warm-gray);
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      color: var(--deep-rose);
     }
 
     .rp-size {
@@ -3245,9 +3246,9 @@
     <li><a href="#scenes">利用シーン</a></li>
     <li><a href="#events">イベント</a></li>
     <li><a href="#news">お知らせ</a></li>
-    <li><a href="#gallery">ギャラリー</a></li>
     <li><a href="#spaces">スペース紹介</a></li>
     <li><a href="#pricing">料金</a></li>
+    <li><a href="#gallery">ギャラリー</a></li>
     <li><a href="#owner">オーナーの想い</a></li>
     <li><a href="#access">アクセス</a></li>
   </ul>
@@ -3272,10 +3273,10 @@
     <li><a href="#scenes"   onclick="closeMenu()">利用シーン</a></li>
     <li><a href="#events"   onclick="closeMenu()">イベント</a></li>
     <li><a href="#news"     onclick="closeMenu()">お知らせ</a></li>
-    <li><a href="#gallery"  onclick="closeMenu()">ギャラリー</a></li>
     <!-- 追加分でov-linksが8項目になったため、8番目のstaggerを補完 -->
     <li><a href="#spaces"   onclick="closeMenu()">スペース紹介</a></li>
     <li><a href="#pricing"  onclick="closeMenu()">料金</a></li>
+    <li><a href="#gallery"  onclick="closeMenu()">ギャラリー</a></li>
     <li><a href="#owner"    onclick="closeMenu()">オーナーの想い</a></li>
     <li><a href="#access"   onclick="closeMenu()">アクセス</a></li>
   </ul>
@@ -3774,89 +3775,6 @@
 </section>
 
 
-<!-- ══════════════════════════════════
-     GALLERY (solid)
-══════════════════════════════════ -->
-<style>
-  #gallery {
-    background: var(--cream);
-    padding: 96px 0 100px;
-    overflow: hidden;
-  }
-  .gallery-wrap { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
-  .gallery-head { text-align: center; margin-bottom: 48px; }
-  .gallery-head .h2 { margin-top: 12px; }
-  .gallery-head .g-sub {
-    margin-top: 14px;
-    font-family: var(--f-body);
-    font-size: .78rem;
-    letter-spacing: .1em;
-    line-height: 2;
-    color: var(--warm-gray);
-  }
-  .gallery-grid {
-    column-count: 4;
-    column-gap: 10px;
-  }
-  .g-item {
-    position: relative;
-    margin: 0 0 10px;
-    break-inside: avoid;
-    overflow: hidden;
-    border-radius: 3px;
-    background: var(--light-gray);
-    box-shadow: 0 8px 26px rgba(58,50,50,.08);
-  }
-  .g-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s;
-    filter: saturate(.96);
-  }
-  .g-item:hover img { transform: scale(1.045); filter: saturate(1.05); }
-  .g-item::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(58,50,50,.18), transparent 42%);
-    opacity: 0; transition: opacity .5s;
-    pointer-events: none;
-  }
-  .g-item:hover::after { opacity: 1; }
-  @media (max-width: 860px) {
-    .gallery-grid { column-count: 3; }
-    .gallery-wrap { padding: 0 24px; }
-  }
-  @media (max-width: 480px) {
-    .gallery-grid { column-count: 2; column-gap: 10px; }
-    .g-item { margin-bottom: 10px; }
-  }
-</style>
-<section id="gallery" class="solid">
-  <div class="gallery-wrap">
-    <div class="gallery-head reveal">
-      <p class="eyebrow" style="justify-content:center;">Gallery</p>
-      <p class="g-sub">リノベーションを終えた館内と、鈴蘭台の街並み。</p>
-    </div>
-    <div class="gallery-grid">
-      <figure class="g-item reveal"><img src="g01.jpg" alt="すずらんテラス SOTTO 外観と鈴蘭台の坂道" loading="lazy" /></figure>
-      <figure class="g-item reveal d1"><img src="g03.jpg" alt="ROOM4 青い花柄のカフェスペース" loading="lazy" /></figure>
-      <figure class="g-item reveal d2"><img src="g06.jpg" alt="ピーチカラーの個室" loading="lazy" /></figure>
-      <figure class="g-item reveal"><img src="ext-entrance.jpg" alt="COFFEE ROOM・EKUBO のエントランス" loading="lazy" /></figure>
-      <figure class="g-item reveal d1"><img src="g07.jpg" alt="セージグリーンの個室" loading="lazy" /></figure>
-      <figure class="g-item reveal d2"><img src="g02.jpg" alt="SOTTO ロゴサイン" loading="lazy" /></figure>
-      <figure class="g-item reveal"><img src="g08.jpg" alt="造作棚のあるお部屋" loading="lazy" /></figure>
-      <figure class="g-item reveal d1"><img src="g11.jpg" alt="建物の外観（サイド）" loading="lazy" /></figure>
-      <figure class="g-item reveal d2"><img src="g09.jpg" alt="ペンダントライトとチェアのしつらえ" loading="lazy" /></figure>
-      <figure class="g-item reveal"><img src="g10.jpg" alt="SOTTO の入口ドア" loading="lazy" /></figure>
-      <figure class="g-item reveal d1"><img src="g15.jpg" alt="明るい二面窓のお部屋" loading="lazy" /></figure>
-      <figure class="g-item reveal d2"><img src="g13.jpg" alt="COFFEE ROOM の看板ディテール" loading="lazy" /></figure>
-      <figure class="g-item reveal"><img src="g18.jpg" alt="二枚扉と窓のある明るいお部屋" loading="lazy" /></figure>
-      <figure class="g-item reveal d2"><img src="g14.jpg" alt="鈴蘭台の坂道から見た建物外観" loading="lazy" /></figure>
-      <figure class="g-item reveal"><img src="room1-toitsugi.jpg" alt="1F 元喫茶店をリノベした内観（木のカウンターとヴィンテージ照明・TOITSUGI）" loading="lazy" /></figure>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════
      SPACES (solid)
@@ -4023,6 +3941,90 @@
     </div>
     <div class="pricing-note-item">
       <p class="pricing-note-val">見学無料<br>随時受付中</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     GALLERY (solid)
+══════════════════════════════════ -->
+<style>
+  #gallery {
+    background: var(--cream);
+    padding: 96px 0 100px;
+    overflow: hidden;
+  }
+  .gallery-wrap { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+  .gallery-head { text-align: center; margin-bottom: 48px; }
+  .gallery-head .h2 { margin-top: 12px; }
+  .gallery-head .g-sub {
+    margin-top: 14px;
+    font-family: var(--f-body);
+    font-size: .78rem;
+    letter-spacing: .1em;
+    line-height: 2;
+    color: var(--warm-gray);
+  }
+  .gallery-grid {
+    column-count: 4;
+    column-gap: 10px;
+  }
+  .g-item {
+    position: relative;
+    margin: 0 0 10px;
+    break-inside: avoid;
+    overflow: hidden;
+    border-radius: 3px;
+    background: var(--light-gray);
+    box-shadow: 0 8px 26px rgba(58,50,50,.08);
+  }
+  .g-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s;
+    filter: saturate(.96);
+  }
+  .g-item:hover img { transform: scale(1.045); filter: saturate(1.05); }
+  .g-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(58,50,50,.18), transparent 42%);
+    opacity: 0; transition: opacity .5s;
+    pointer-events: none;
+  }
+  .g-item:hover::after { opacity: 1; }
+  @media (max-width: 860px) {
+    .gallery-grid { column-count: 3; }
+    .gallery-wrap { padding: 0 24px; }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { column-count: 2; column-gap: 10px; }
+    .g-item { margin-bottom: 10px; }
+  }
+</style>
+<section id="gallery" class="solid">
+  <div class="gallery-wrap">
+    <div class="gallery-head reveal">
+      <p class="eyebrow" style="justify-content:center;">Gallery</p>
+      <p class="g-sub">リノベーションを終えた館内と、鈴蘭台の街並み。</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g-item reveal"><img src="g01.jpg" alt="すずらんテラス SOTTO 外観と鈴蘭台の坂道" loading="lazy" /></figure>
+      <figure class="g-item reveal d1"><img src="g03.jpg" alt="ROOM4 青い花柄のカフェスペース" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g06.jpg" alt="ピーチカラーの個室" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="ext-entrance.jpg" alt="COFFEE ROOM・EKUBO のエントランス" loading="lazy" /></figure>
+      <figure class="g-item reveal d1"><img src="g07.jpg" alt="セージグリーンの個室" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g02.jpg" alt="SOTTO ロゴサイン" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="g08.jpg" alt="造作棚のあるお部屋" loading="lazy" /></figure>
+      <figure class="g-item reveal d1"><img src="g11.jpg" alt="建物の外観（サイド）" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g09.jpg" alt="ペンダントライトとチェアのしつらえ" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="g10.jpg" alt="SOTTO の入口ドア" loading="lazy" /></figure>
+      <figure class="g-item reveal d1"><img src="g15.jpg" alt="明るい二面窓のお部屋" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g13.jpg" alt="COFFEE ROOM の看板ディテール" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="g18.jpg" alt="二枚扉と窓のある明るいお部屋" loading="lazy" /></figure>
+      <figure class="g-item reveal d2"><img src="g14.jpg" alt="鈴蘭台の坂道から見た建物外観" loading="lazy" /></figure>
+      <figure class="g-item reveal"><img src="room1-toitsugi.jpg" alt="1F 元喫茶店をリノベした内観（木のカウンターとヴィンテージ照明・TOITSUGI）" loading="lazy" /></figure>
     </div>
   </div>
 </section>
