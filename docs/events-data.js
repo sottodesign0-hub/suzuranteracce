@@ -39,7 +39,7 @@ const EVENTS = [
     date: "2026-12-12",
     cat: "event",
     title: "台湾ランタン祭り",
-    time: "10:00〜16:00",
+    time: "10:30〜16:00",
     desc: "台湾料理とランタン作りワークショップ。本場の味と手づくりランタンを楽しむ一日。すずらんテラスSOTTOにて開催します。",
     img: "event/1212taiwan-lantern.png"
   }
